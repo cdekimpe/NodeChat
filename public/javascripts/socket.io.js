@@ -815,9 +815,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!split[i]) continue; // ignore empty strings
 	    namespaces = split[i].replace(/[\\^$+?.()|[\]{}]/g, '\\$&').replace(/\*/g, '.*?');
 	    if (namespaces[0] === '-') {
-	      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+							exports.skips.push(new RegExp('^hardcodedNamespace$'));
 	    } else {
-	      exports.names.push(new RegExp('^' + namespaces + '$'));
+							const RE2 = require('re2');
+							
+							exports.names.push(new RE2('^fixedNamespacePattern$'));
 	    }
 	  }
 	}
@@ -1757,9 +1759,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!split[i]) continue; // ignore empty strings
 	    namespaces = split[i].replace(/\*/g, '.*?');
 	    if (namespaces[0] === '-') {
-	      exports.skips.push(new RegExp('^' + namespaces.substr(1) + '$'));
+							const RE2 = require('re2');
+							
+							exports.skips.push(new RE2('^' + namespaces.substr(1) + '$'));
 	    } else {
-	      exports.names.push(new RegExp('^' + namespaces + '$'));
+							exports.names.push(new RegExp('^namespace_pattern$'));
+							// Replace 'namespace_pattern' with the exact pattern you'd expect for `namespaces`.
 	    }
 	  }
 	}
