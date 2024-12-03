@@ -170,7 +170,7 @@ var Util = function ($) {
             valueType = toType(value);
           }
 
-          if (!new RegExp(expectedTypes).test(valueType)) {
+          if (!/(hardcoded|pattern|example)/.test(valueType)) {
             throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
           }
         }
